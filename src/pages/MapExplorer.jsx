@@ -26,7 +26,6 @@ const MapExplorer = () => {
     iconAnchor: [55, 14]
   });
 
-  // 10 LOCALES CON 10 IMÁGENES CADA UNO, JOAN
   const locales = [
     { 
       id: 1, nombre: "La Vera Pasta", pos: [-33.4489, -70.6693], rating: "4.8", tipo: "Pasta", precio: "$12.000",
@@ -174,11 +173,11 @@ const MapExplorer = () => {
         </MapContainer>
       </div>
 
-      {/* TARJETA CON CARRUSEL Y BOTÓN X, JOAN */}
+      {/* TARJETA CON CARRUSEL Y BOTÓN X */}
       {selectedLocal && (
         <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-[1001] w-[90%] max-w-[350px] bg-white rounded-3xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-10 duration-300">
           
-          {/* Botón X para cerrar el Popup */}
+          {/* Botón X de cierre */}
           <button 
             onClick={() => setSelectedLocal(null)}
             className="absolute top-3 right-3 z-[1002] bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg border border-slate-100 hover:bg-white transition-all"
@@ -188,7 +187,7 @@ const MapExplorer = () => {
             </svg>
           </button>
 
-          {/* Carrusel */}
+          {/* Carrusel Táctil */}
           <div className="h-48 w-full bg-slate-200 relative group">
             <img 
               src={selectedLocal.fotos[currentImageIndex]} 
@@ -197,19 +196,28 @@ const MapExplorer = () => {
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400"; }}
             />
             
-            <button onClick={prevImage} className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-1.5 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all hover:bg-white">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" /></svg>
+            {/* Flechas visibles siempre en móvil y escritorio */}
+            <button 
+              onClick={prevImage} 
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-md transition-all active:scale-90 z-[1003]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+              </svg>
             </button>
-            <button onClick={nextImage} className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-1.5 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all hover:bg-white">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+            <button 
+              onClick={nextImage} 
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-md transition-all active:scale-90 z-[1003]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
 
-            {/* Contador numérico estilo Airbnb */}
             <div className="absolute bottom-3 right-3 bg-black/50 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">
               {currentImageIndex + 1} / {selectedLocal.fotos.length}
             </div>
 
-            {/* Barritas de navegación */}
             <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 px-4 w-full justify-center overflow-hidden">
               {selectedLocal.fotos.map((_, i) => (
                 <div key={i} className={`h-1 rounded-full transition-all flex-1 max-w-[15px] ${i === currentImageIndex ? 'bg-white' : 'bg-white/40'}`}></div>
@@ -217,7 +225,6 @@ const MapExplorer = () => {
             </div>
           </div>
 
-          {/* Info */}
           <div className="p-4 cursor-pointer" onClick={() => navigate(`/establecimiento/${selectedLocal.id}`)}>
             <div className="flex justify-between items-start">
               <h3 className="font-bold text-slate-900 text-lg leading-tight">{selectedLocal.nombre}</h3>
@@ -234,7 +241,7 @@ const MapExplorer = () => {
         </div>
       )}
 
-      {/* BOTÓN VOLVER AL INICIO, JOAN */}
+      {/* BOTÓN VOLVER AL INICIO */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[1000]">
          <button 
            onClick={() => navigate('/')} 
