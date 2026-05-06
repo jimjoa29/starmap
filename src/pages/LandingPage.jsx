@@ -61,7 +61,7 @@ const LandingPage = () => {
       <section className="bg-slate-50 py-24 px-8">
         <div className="max-w-7xl mx-auto text-center mb-16">
           <h2 className="text-4xl font-black mb-4">¿Cómo transformamos tu negocio?</h2>
-          <p className="text-slate-500 font-medium">Llevamos el flujo de clientes de Santiago directamente a tu mesa.</p>
+          <p className="text-slate-500 font-medium">Llevamos el flujo de clientes de Santiago directamente a tu negocio.</p>
         </div>
         
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
@@ -80,7 +80,7 @@ const LandingPage = () => {
       </section>
 
       {/* 4. PASO A PASO PARA NEGOCIOS */}
-      <section className="py-24 px-8 max-w-7xl mx-auto">
+      <section className="py-8 px-8 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
              <div className="space-y-12">
